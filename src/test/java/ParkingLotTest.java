@@ -29,7 +29,7 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(6);
         Car car = new Car("KA-01-HH-1234", "White");
         parkingLot.parkCar(car);
-        assertTrue(parkingLot.unparkCar(1));
+        assertTrue(parkingLot.unparkCar(car));
     }
 
     @Test
