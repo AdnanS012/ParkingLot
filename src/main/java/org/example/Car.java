@@ -2,20 +2,20 @@ package org.example;
 
 public class Car {
     private final String color;
-    private final String getRegistrationNumber;
+    private final String RegistrationNumber;
 
-    public Car(String color,String getRegistrationNumber) {
+    public Car(String color, String RegistrationNumber) {
         this.color = color;
-        this.getRegistrationNumber = getRegistrationNumber;
+        this.RegistrationNumber = RegistrationNumber;
     }
 
-    public String getColor() {
-        return color;
-    }
-    public String getRegistrationNumber() {
-        return getRegistrationNumber;
+    public boolean hasRegistrationNumber(String registrationNumber) {
+            return this.RegistrationNumber.equals(registrationNumber);
     }
 
+    public boolean hasColor(String color){
+        return this.color.equalsIgnoreCase(color);
+    }
 
 
 }

@@ -33,7 +33,7 @@ public class ParkingLot {
         return false;
     }
 
-    public int getCountOfCarsByColor(String color) {
+    public int CountOfCarsByColor(String color) {
         int count = 0;
         for (Car car : parkingSlots.values()) {
             if (car.getColor().equalsIgnoreCase(color)) {

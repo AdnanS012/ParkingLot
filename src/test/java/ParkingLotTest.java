@@ -44,7 +44,7 @@ public class ParkingLotTest {
         parkingLot.parkCar(car3);
         parkingLot.parkCar(car4);
 
-        assertEquals(2, parkingLot.getCountOfCarsByColor("White"));
+        assertEquals(2, parkingLot.CountOfCarsByColor("White"));
     }
 
     @Test
