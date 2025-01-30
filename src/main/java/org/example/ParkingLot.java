@@ -43,12 +43,12 @@ public class ParkingLot {
         return count;
 
     }
-    public int getSlotsNumberOfParkedCar(Car car){
-        for (Map.Entry<Integer, Car> entry : parkingSlots.entrySet()) {
-            if (entry.getValue().equals(car)) {
-                return entry.getKey();
+    public boolean isCarParked(String registrationNumber){
+        for (Car car : parkingSlots.values()) {
+            if (car.getRegistrationNumber().equalsIgnoreCase(registrationNumber)) {
+                return true;
             }
         }
-        return -1;
+        return false;
     }
 }

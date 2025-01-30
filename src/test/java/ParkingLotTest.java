@@ -48,13 +48,17 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void testReturnSlotNumberOfParkedCar() {
+    public void testIsParkedWithRegistrationNumber(){
         ParkingLot parkingLot = new ParkingLot(6);
-        Car car1 = new Car("KA-01-HH-1234", "White");
-        Car car2 = new Car("KA-01-HH-9999", "White");
+        Car car1 = new Car("White", "KA-01-HH-1234");
+        Car car2 = new Car("White", "KA-01-HH-9999");
+        Car car3 = new Car("Black", "KA-01-HH-1001");
+        Car car4 = new Car("Blue", "KA-01-HH-1002");
         parkingLot.parkCar(car1);
         parkingLot.parkCar(car2);
-        assertEquals(2, parkingLot.getSlotsNumberOfParkedCar(car2));
+        parkingLot.parkCar(car3);
+        parkingLot.parkCar(car4);
 
+        assertTrue(parkingLot.isCarParked("KA-01-HH-1234"));
     }
 }
