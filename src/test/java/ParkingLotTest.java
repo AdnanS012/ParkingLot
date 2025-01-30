@@ -47,26 +47,14 @@ public class ParkingLotTest {
         assertEquals(2, parkingLot.getCountOfCarsByColor("White"));
     }
 
+    @Test
+    public void testReturnSlotNumberOfParkedCar() {
+        ParkingLot parkingLot = new ParkingLot(6);
+        Car car1 = new Car("KA-01-HH-1234", "White");
+        Car car2 = new Car("KA-01-HH-9999", "White");
+        parkingLot.parkCar(car1);
+        parkingLot.parkCar(car2);
+        assertEquals(2, parkingLot.getSlotsNumberOfParkedCar(car2));
 
-
-
-
-//        @Test
-//    public void testParkCarInNearestAvailableSlots(){
-//            ParkingLot parkingLot = new ParkingLot(6);
-//            Car car1 = new Car("KA-01-HH-1234", "White");
-//            Car car2 = new Car("KA-01-HH-9999", "White");
-//            parkingLot.parkCar(car1);
-//            parkingLot.parkCar(car2);
-//            assertEquals(2, parkingLot.getSlotNumberByCar(car2));
-//
-//        }
-//        @Test
-//    public void testUnparkCar(){
-//            ParkingLot parkingLot = new ParkingLot();
-//            Car car = new Car("KA-01-HH-1234", "White");
-//            parkingLot.parkCar(car);
-//            assertTrue(parkingLot.leaveCar(1));
-//        }
-
+    }
 }

@@ -43,4 +43,12 @@ public class ParkingLot {
         return count;
 
     }
+    public int getSlotsNumberOfParkedCar(Car car){
+        for (Map.Entry<Integer, Car> entry : parkingSlots.entrySet()) {
+            if (entry.getValue().equals(car)) {
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
 }
