@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private int slotsNumber;
+    private final int slotsNumber;
     private Map<Integer, ParkingSlot> parkingSlots;
 
     public ParkingLot(int slotsNumber) {
@@ -29,7 +29,7 @@ public class ParkingLot {
     }
 
 
-    public boolean unparkCar(Car car) {
+    public boolean unparkCar() {
         for (ParkingSlot slot : parkingSlots.values()) {
             if (slot.isOccupied()) {
                 slot.unPark();
