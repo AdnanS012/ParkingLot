@@ -6,7 +6,7 @@ public class Car {
 
     public Car(String color,String getRegistrationNumber) {
         this.color = color;
-        this.getRegistrationNumber = getRegistrationNumber;;
+        this.getRegistrationNumber = getRegistrationNumber;
     }
 
     public String getColor() {
