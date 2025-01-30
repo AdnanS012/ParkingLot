@@ -9,6 +9,13 @@ public class Car {
         this.numberPlate = numberPlate;;
     }
 
+    public String getColor() {
+        return color;
+    }
+    public String getNumberPlate() {
+        return numberPlate;
+    }
+
 
 
 }
