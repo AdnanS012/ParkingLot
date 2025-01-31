@@ -8,6 +8,9 @@ public class Car {
         if (color == null || color.isEmpty()) {
             throw new IllegalArgumentException("Color cannot be null or empty");
         }
+        if (RegistrationNumber == null || RegistrationNumber.isEmpty()) {
+            throw new IllegalArgumentException("Registration number cannot be null or empty");
+        }
         this.color = color;
         this.RegistrationNumber = RegistrationNumber;
     }
