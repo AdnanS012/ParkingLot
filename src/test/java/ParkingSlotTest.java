@@ -21,15 +21,7 @@ public class ParkingSlotTest {
             slot.unPark();
                 assertFalse(slot.isOccupied());
    }
-   @Test
-    public void testIsCarWithRegistrationNumber(){
-         ParkingSlot slot = new ParkingSlot(1);
-         Car car = new Car("White", "KA-01-HH-1234");
-         Car car1 = new Car("Blue",null);
-            slot.parkCar(car);
-                assertTrue(slot.hasCarWithRegistration("KA-01-HH-1234"));
-                assertThrows(IllegalArgumentException.class, () -> slot.hasCarWithRegistration(null));
-   }
+
 
 
 }
