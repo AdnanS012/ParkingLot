@@ -5,6 +5,9 @@ public class Car {
     private final String RegistrationNumber;
 
     public Car(String color, String RegistrationNumber) {
+        if (color == null || color.isEmpty()) {
+            throw new IllegalArgumentException("Color cannot be null or empty");
+        }
         this.color = color;
         this.RegistrationNumber = RegistrationNumber;
     }

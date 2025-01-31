@@ -29,14 +29,14 @@ public class ParkingLot {
     }
 
 
-    public boolean unparkCar() {
+    public boolean unparkCar(String registrationNumber) {
         for (ParkingSlot slot : parkingSlots.values()) {
-            if (slot.isOccupied()) {
+            if (slot.isOccupied() && slot.hasCarWithRegistration(registrationNumber)) {
                 slot.unPark();
                 return true;
             }
         }
-     return  false;
+        return false;
     }
 
     public int CountOfCarsByColor(String color) {
