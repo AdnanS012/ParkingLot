@@ -22,6 +22,9 @@ public class Car {
     public boolean hasColor(String color){
         return this.color.equalsIgnoreCase(color);
     }
+    protected String provideRegistrationNumber() {
+        return RegistrationNumber;
+    }
 
 
 }

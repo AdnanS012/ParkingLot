@@ -4,37 +4,45 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private final int slotsNumber;
+    private final Map<Ticket,Integer> ticketSlotMap;
     private Map<Integer, ParkingSlot> parkingSlots;
 
     public ParkingLot(int slotsNumber) {
         if (slotsNumber <= 0) {
             throw new IllegalArgumentException("Number of slots cannot be negative or zero");
         }
-        this.slotsNumber = slotsNumber;
+
         this.parkingSlots = new HashMap<>();
+        this.ticketSlotMap = new HashMap<>();
         for (int i = 1; i <= slotsNumber; i++) {
             parkingSlots.put(i, new ParkingSlot(i));
         }
     }
-
-    public boolean parkCar(Car car) {
-        for (ParkingSlot parkingSlot : parkingSlots.values()) {
+   //parks the car and issues a ticket
+    public Ticket parkCar(Car car) {
+        for (Map.Entry<Integer, ParkingSlot> entry : parkingSlots.entrySet()) {
+            ParkingSlot parkingSlot = entry.getValue();
             if (!parkingSlot.isOccupied()) {
                 parkingSlot.parkCar(car);
-                return true;
+                Ticket ticket = Ticket.createTicket(car);
+                ticketSlotMap.put(ticket, entry.getKey());
+                return ticket;
             }
         }
-        return false;
+        throw new IllegalArgumentException("Parking lot is full");
     }
 
 
-    public boolean unparkCar(String registrationNumber) {
-        for (ParkingSlot slot : parkingSlots.values()) {
-            if (slot.isOccupied() && slot.hasCarWithRegistration(registrationNumber)) {
-                slot.unPark();
-                return true;
-            }
+    public boolean unparkCar(Ticket ticket) {
+        Integer slotNumber = ticketSlotMap.get(ticket);
+        if (slotNumber == null) {
+            return false;
+        }
+        ParkingSlot parkingSlot = parkingSlots.get(slotNumber);
+        if (parkingSlot.isOccupied()) {
+            parkingSlot.unPark();
+            ticketSlotMap.remove(ticket);
+            return true;
         }
         return false;
     }
@@ -49,12 +57,7 @@ public class ParkingLot {
         return count;
     }
 
-    public boolean isCarParked(String registrationNumber) {
-        for (ParkingSlot parkingSlot : parkingSlots.values()) {
-            if (parkingSlot.isOccupied() && parkingSlot.hasCarWithRegistration(registrationNumber)) {
-                return true;
-            }
-        }
-        return false;
+    public boolean isCarParked(Ticket ticket) {
+       return ticketSlotMap.containsKey(ticket);
     }
 }
