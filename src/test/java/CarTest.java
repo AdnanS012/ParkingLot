@@ -24,5 +24,6 @@ public class CarTest {
         assertTrue(car.hasColor("white"));
         assertTrue(car.hasColor("WHITE"));
     }
+    
 
 }
