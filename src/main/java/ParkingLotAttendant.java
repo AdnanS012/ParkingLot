@@ -1,6 +1,5 @@
 import org.example.Car;
 import org.example.ParkingLot;
-import org.example.ParkingSlot;
 import org.example.Ticket;
 
 import java.util.ArrayList;

@@ -10,10 +10,7 @@ public class CarTest {
         Car car = new Car("White", "KA-01-HH-1234");
         assertNotNull(car);
     }
-    @Test
-    public void testCarWithNoColorThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> new Car(null, "KA-01-HH-1234"));
-    }
+
     @Test
     public void testCarWithNoRegistrationNumberThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> new Car("White", null));

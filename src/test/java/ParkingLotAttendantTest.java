@@ -11,7 +11,7 @@ public class ParkingLotAttendantTest {
     @Test
     public void testParkingLotAttendant() {
         ParkingLotAttendant parkingLotAttendant = new ParkingLotAttendant("John");
-        assertNotNull(parkingLotAttendant);
+        Assertions.assertNotNull(parkingLotAttendant);
     }
     @Test
     public void testAssignParkinglot(){
@@ -29,7 +29,7 @@ public class ParkingLotAttendantTest {
         attendant.assignParkingLot(parkingLot1);
         Car car = new Car("KA-01-HH-1234", "White");
         Ticket ticket = attendant.parkCar(car);
-        assertNotNull(ticket);
+        Assertions.assertNotNull(ticket);
         assertTrue(parkingLot1.isCarParked(ticket));
     }
 
@@ -48,7 +48,7 @@ public class ParkingLotAttendantTest {
         Car car = new Car("KA-01-HH-1234", "White");
         Ticket ticket = attendant.parkCar(car);
         assertTrue(attendant.unparkCar(ticket));
-        assertFalse(parkingLot1.isCarParked(ticket));
+        Assertions.assertFalse(parkingLot1.isCarParked(ticket));
 
     }
 
@@ -63,7 +63,7 @@ public class ParkingLotAttendantTest {
 
         Car car = new Car("KA-01-HH-1234", "White");
         Ticket ticket = attendant.parkCar(car);
-        assertNotNull(ticket);
+        Assertions.assertNotNull(ticket);
         assertTrue(parkingLot1.isCarParked(ticket) || parkingLot2.isCarParked(ticket));
     }
     @Test
