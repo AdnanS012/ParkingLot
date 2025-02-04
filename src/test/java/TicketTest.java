@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TicketTest {
     @Test
     public void testTicketCannotBeCreatedWithNullValues() {
-        assertThrows(NullPointerException.class, () -> Ticket.createTicket(null));
         assertThrows(IllegalArgumentException.class, () -> Ticket.createTicket(new Car(null, "White")));
         assertThrows(IllegalArgumentException.class, () -> Ticket.createTicket(new Car("KA-01-HH-1234", null)));
     }

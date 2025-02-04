@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class ParkingLot {
     private final Map<Ticket,Integer> ticketSlotMap;
-    private Map<Integer, ParkingSlot> parkingSlots;
+    private final Map<Integer, ParkingSlot> parkingSlots;
 
     public ParkingLot(int slotsNumber) {
         if (slotsNumber <= 0) {
@@ -32,7 +32,7 @@ public class ParkingLot {
         throw new IllegalArgumentException("Parking lot is full");
     }
 
-
+     //Un-parks the car associated with the given ticket
     public boolean unparkCar(Ticket ticket) {
         Integer slotNumber = ticketSlotMap.get(ticket);
         if (slotNumber == null) {

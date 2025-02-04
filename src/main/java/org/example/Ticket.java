@@ -4,31 +4,40 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Ticket {
-    private final String registrationNumber;
     private final String ticketId;
+    private final Car car;
 
-    public Ticket(String registrationNumber, String ticketId) {
-        this.registrationNumber = registrationNumber;
-        this.ticketId = ticketId;
+    private Ticket(String ticketId, Car car) {
+        if (ticketId == null || car == null) {
+            throw new IllegalArgumentException("Ticket Id or Car cannot be null");
+        }
+            this.ticketId = ticketId;
+            this.car = car;
+
+
+    }
+    public static Ticket createTicket (Car car){
+        return new Ticket(UUID.randomUUID().toString(), car);
+    }
+    public boolean isForCar(Car otherCar){
+        return this.car == otherCar;
     }
 
-    public static Ticket createTicket(Car car) {
-       String id = UUID.randomUUID().toString(); //generate unique id
-       String registerNumber = car.provideRegistrationNumber();
-        return new Ticket(id, registerNumber);
-    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Ticket)) return false;
         Ticket ticket = (Ticket) o;
-        return Objects.equals(registrationNumber, ticket.registrationNumber) &&
-                Objects.equals(ticketId, ticket.ticketId);
+        return ticketId.equals(ticket.ticketId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(registrationNumber, ticketId);
+        return Objects.hash(ticketId);
+    }
+    @Override
+    public String toString() {
+        return "Ticket{" + "ticketId='" + ticketId + "'}";
     }
 
 }
