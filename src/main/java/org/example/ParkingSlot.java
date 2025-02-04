@@ -25,17 +25,19 @@ public class ParkingSlot {
         }
         this.car = null;
     }
-        public boolean hasCarWithRegistration(String registrationNumber){
-        if(registrationNumber == null || registrationNumber.isEmpty()){
+
+    public boolean hasCarWithRegistration(String registrationNumber) {
+        if (registrationNumber == null || registrationNumber.isEmpty()) {
             throw new IllegalArgumentException("Registration number cannot be null or empty");
         }
-            return isOccupied() && car.hasRegistrationNumber(registrationNumber);
-        }
-        public boolean hasCarWithColor(String color){
-        if(color == null || color.isEmpty()){
+        return isOccupied() && car.hasRegistrationNumber(registrationNumber);
+    }
+
+    public boolean hasCarWithColor(String color) {
+        if (color == null || color.isEmpty()) {
             throw new IllegalArgumentException("Color cannot be null or empty");
         }
-            return isOccupied() && car.hasColor(color);
-        }
+        return isOccupied() && car.hasColor(color);
     }
+}
 

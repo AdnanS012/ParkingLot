@@ -1,18 +1,22 @@
 import org.example.Car;
-import org.example.ParkingLot;
 import org.example.ParkingSlot;
 import org.junit.Test;
-import org.mockito.Mockito;
-
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class ParkingSlotTest {
+    @Test
+    public void testSlotOccupied(){
+        ParkingSlot slot = new ParkingSlot(1);
+        assertFalse(slot.isOccupied());
+    }
+    @Test
+    public void testParkCarThrowsExceptionWhenSlotIsOccupied() {
+        ParkingSlot slot = new ParkingSlot(1);
+        Car car1 = new Car("KA-01-HH-1234", "White");
+        Car car2 = new Car("KA-01-HH-9999", "Black");
+        slot.parkCar(car1);
+        assertThrows(IllegalStateException.class, () -> slot.parkCar(car2));
+    }
    @Test
     public void testIsCarParked(){
        ParkingSlot slot = new ParkingSlot(1);
@@ -29,6 +33,20 @@ public class ParkingSlotTest {
             slot.unPark();
                 assertFalse(slot.isOccupied());
    }
-
+    @Test
+    public void testHasCarWithColor() {
+        ParkingSlot slot = new ParkingSlot(1);
+        Car car = new Car("White", "KA-01-HH-1234");
+        slot.parkCar(car);
+        assertTrue(slot.hasCarWithColor("White"));
+    }
+    @Test
+    public void testHasCarWithRegistration() {
+        ParkingSlot slot = new ParkingSlot(1);
+        Car car = new Car("Black", "KA-01-HH-1234");
+        slot.parkCar(car);
+        assertTrue(slot.hasCarWithRegistration("KA-01-HH-1234"));
+        assertFalse(slot.hasCarWithRegistration("KA-01-HH-9999"));
+    }
 
 }

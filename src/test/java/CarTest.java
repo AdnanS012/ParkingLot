@@ -24,6 +24,12 @@ public class CarTest {
         assertTrue(car.hasColor("white"));
         assertTrue(car.hasColor("WHITE"));
     }
-    
+    @Test
+    public void testHasRegistrationNumberCaseInsensitive() {
+        Car car = new Car("White", "KA-01-HH-1234");
+        assertFalse(car.hasRegistrationNumber("ka-01-Mh-9234"));
+        assertTrue(car.hasRegistrationNumber("KA-01-HH-1234"));
+    }
+
 
 }
